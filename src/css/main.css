@@ -1,0 +1,68 @@
+/* Global */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* Nav */
+.navbar {
+  height: 60px;
+  background-color: #e06666;
+  text-align: center;
+  padding-left: 40px;
+}
+
+/*.drawer-nav {
+  overflow-y: scroll;
+}*/
+
+.drawer-hamburger-icon,
+.drawer-hamburger-icon:after, .drawer-hamburger-icon:before {
+  background-color: #fff;
+  height: 3px;
+}
+
+.title {
+  margin: 5px 0 0 0;
+  padding:0;
+  color: #fff;
+  font-family: 'Lemonada', cursive;
+}
+
+.title-long {
+  display: inline-block;
+}
+
+.title-short {
+  display: none;
+}
+
+.server-status {
+  background-color: #fff;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
+  float: right;
+  margin: 20px 20px 20px 0;
+}
+
+/* Map */
+#map {
+  height: calc(100vh - 60px);
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+}
+
+/* Media Queries */
+@media (max-width: 640px) {
+  .title-short {
+    font-size: 22px;
+    display: inline-block;
+  }
+  .title-long {
+    display: none;
+  }
+}

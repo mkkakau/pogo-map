@@ -14,7 +14,7 @@ var controller = {
       var lng = data.lng;
       var gym = new Location (location_id, 'gym', lat, lng, name);
       MapView.updateMarker(gym);
-      listView.gyms.push(gym);
+      listView.locations.push(gym);
     });
   },
   updatePokeStops : function () {
@@ -26,7 +26,7 @@ var controller = {
       var lng = data.lng;
       var pokestop = new Location (location_id, 'pokestop', lat, lng, name);
       MapView.updateMarker(pokestop);
-      listView.pokestops.push(pokestop);
+      listView.locations.push(pokestop);
     });
   },
   updateSpawns : function () {
@@ -39,12 +39,12 @@ var controller = {
       var lng = data.lng;
 
       model.locations[loc_id] = new SpawnLocation(loc_id, lat, lng, new Pokemon(id, name));
-
+      listView.locations.push(model.locations[loc_id]);
       if (model.pokemons[id] === undefined) {
         model.pokemons[id] = new Pokemon(id, name);
         model.locations[loc_id].updatePokeInfo(model.pokemons[id]);
         MapView.updateMarker(model.locations[loc_id]);
-        listView.spawns.push(model.locations[loc_id]);
+
       }
       // Update data from pogosnap
       if (model.pokemons[id].pogoSnapStatus === 'ok') {
@@ -72,9 +72,11 @@ var controller = {
           model.pokemons[id].weight = bioData.weight;
           model.pokemons[id].height = bioData.height;
           model.pokemons[id].pokeapiStatus = bioData.status;
-          bioData.types.forEach(function (i) {
-            model.pokemons[id].types.push(i.type.name);
-          });
+          if(bioData.types !== null) {
+            bioData.types.forEach(function (i) {
+              model.pokemons[id].types.push(i.type.name);
+            });
+          }
           model.locations[loc_id].updatePokeInfo(model.pokemons[id]);
           MapView.updateMarker(model.locations[loc_id]);
         });

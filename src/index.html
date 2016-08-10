@@ -26,28 +26,17 @@
     </div>
     <nav class="drawer-nav" role="navigation">
       <ul class="drawer-menu">
-        <li class="drawer-brand">Filter Results</li>
-        <li><input class="drawer-menu-item" type="text"></li>
+        <li class="drawer-brand">Filter Results:</li>
+        <li><input id="filter" class="search-bar" type="search" data-bind="value: query, valueUpdate: 'keyup'" autocomplete="off"></li>
         <li>
-          <h3>Gyms</h3>
+          <h3>Markers</h3>
           <hr>
-          <ul data-bind="foreach: gyms">
-            <li><a href="#" class="drawer-menu-item" data-bind="text: name"></a></li>
-          </ul>
-        </li>
-        <li>
-          <h3>Pokestops</h3>
-          <hr>
-          <ul data-bind="foreach: pokestops">
-            <li><a href="#" class="drawer-menu-item" data-bind="text: name"></a></li>
-          </ul>
-        </li>
-        <li>
-          <h3>Pokemon</h3>
-          <hr>
-          <ul data-bind="foreach: spawns">
-            <li><a href="#" class="drawer-menu-item" data-bind="text: name"></a></li>
-          </ul>
+          <table data-bind="foreach: filteredLocations">
+            <tr>
+              <td><img class="icon" src="#" alt="icon" data-bind="attr: {src: icon}"></td>
+              <td><a href="#" class="drawer-menu-item" data-bind="text: name"></a></td>
+            </tr>
+          </table>
         </li>
       </ul>
     </nav>

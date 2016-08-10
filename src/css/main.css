@@ -13,9 +13,26 @@ body {
   padding-left: 40px;
 }
 
-/*.drawer-nav {
-  overflow-y: scroll;
-}*/
+.drawer-menu ul {
+  margin: 0 10px;
+  list-style-type: none;
+  padding: 0;
+}
+
+.drawer-menu ul {
+  margin: 0 10px;
+  list-style-type: none;
+  padding: 0;
+}
+.icon {
+  max-width: 48px;
+  max-height: 48px;
+}
+
+.search-bar {
+  padding: 10px;
+  font-size: 1rem;
+}
 
 .drawer-hamburger-icon,
 .drawer-hamburger-icon:after, .drawer-hamburger-icon:before {
@@ -24,7 +41,7 @@ body {
 }
 
 .title {
-  margin: 5px 0 0 0;
+  margin: 0;
   padding:0;
   color: #fff;
   font-family: 'Lemonada', cursive;

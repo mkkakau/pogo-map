@@ -11,9 +11,9 @@ OR
 
 * Clone the repository and open index.html in the dist folder
 
-`git clone https://github.com/mkkakau/pogo-map.git`
+  `git clone https://github.com/mkkakau/pogo-map.git`
 
 TODO:
 ------------
-* Clickable area for pokemon icons are too big. May be able to fix using icons shape property.
+* Clickable area for pokemon icons are too big. May be able to fix using marker's shape property.
 More info: https://developers.google.com/maps/documentation/javascript/markers

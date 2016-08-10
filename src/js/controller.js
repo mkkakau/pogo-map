@@ -14,6 +14,7 @@ var controller = {
       var lng = data.lng;
       var gym = new Location (location_id, 'gym', lat, lng, name);
       MapView.updateMarker(gym);
+      listView.gyms.push(gym);
     });
   },
   updatePokeStops : function () {
@@ -25,6 +26,7 @@ var controller = {
       var lng = data.lng;
       var pokestop = new Location (location_id, 'pokestop', lat, lng, name);
       MapView.updateMarker(pokestop);
+      listView.pokestops.push(pokestop);
     });
   },
   updateSpawns : function () {
@@ -42,6 +44,7 @@ var controller = {
         model.pokemons[id] = new Pokemon(id, name);
         model.locations[loc_id].updatePokeInfo(model.pokemons[id]);
         MapView.updateMarker(model.locations[loc_id]);
+        listView.spawns.push(model.locations[loc_id]);
       }
       // Update data from pogosnap
       if (model.pokemons[id].pogoSnapStatus === 'ok') {

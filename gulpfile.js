@@ -23,7 +23,7 @@ gulp.task('css', ['clean'], function () {
 });
 
 gulp.task('js', ['clean'], function () {
-  return gulp.src(['src/apis.js', 'src/js/model.js', 'src/js/view.js', 'src/js/controller.js'])
+  return gulp.src(['src/apis.js', 'src/js/model.js', 'src/js/view.js', 'src/js/listview.js', 'src/js/controller.js'])
     .pipe(sourcemaps.init())
     .pipe(uglifyJS())
     .pipe(concat('all.min.js'))

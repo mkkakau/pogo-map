@@ -32,21 +32,21 @@
           <h3>Gyms</h3>
           <hr>
           <ul data-bind="foreach: gyms">
-            <li><a href="#" class="drawer-menu-item" data-bind="text: title"></a></li>
+            <li><a href="#" class="drawer-menu-item" data-bind="text: name"></a></li>
           </ul>
         </li>
         <li>
           <h3>Pokestops</h3>
           <hr>
           <ul data-bind="foreach: pokestops">
-            <li><a href="#" class="drawer-menu-item" data-bind="text: title"></a></li>
+            <li><a href="#" class="drawer-menu-item" data-bind="text: name"></a></li>
           </ul>
         </li>
         <li>
           <h3>Pokemon</h3>
           <hr>
           <ul data-bind="foreach: spawns">
-            <li><a href="#" class="drawer-menu-item" data-bind="text: pokemon_name"></a></li>
+            <li><a href="#" class="drawer-menu-item" data-bind="text: name"></a></li>
           </ul>
         </li>
       </ul>
@@ -67,6 +67,7 @@
   <script src="js/apis.js"></script>
   <script src="js/model.js"></script>
   <script src="js/view.js"></script>
+  <script src="js/listview.js"></script>
   <script src="js/controller.js"></script>
   <!-- endbuild -->
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDnmyJXbQ5xflnzlvc1dJetLgJPbNerL-o&v=3&callback=initMap">

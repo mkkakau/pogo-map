@@ -5,13 +5,25 @@ var ListViewViewModel = function () {
   self.filteredLocations = ko.computed(function () {
     var filter = self.query().toLowerCase();
     var filteredLocations = [];
-
+    // sort self.locations
+    self.locations().sort(function (a, b) {
+      var nameA = a.name.toLowerCase();
+      var nameB = b.name.toLowerCase();
+      if (a.name > b.name) {
+        return 1;
+      }
+      if (a.name < b.name) {
+        return -1;
+      }
+      return 0;
+    });
+    
+    // Return all locations if filter is blank
     if (filter === '') {
       // Make all markers visible
       model.markers.forEach(function (marker) {
         marker.setVisible(true);
       });
-      // Return all locations if filter is blank
       return self.locations();
     }
     else {

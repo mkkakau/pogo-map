@@ -30,38 +30,51 @@ var controller = {
   updateSpawns : function () {
     var self = this;
     fb.onChildAdded('spawns', function (data) {
-      var location_id = data.id;
-      var pokemon_id = data.pokemon_id;
-      var pokemon_name = data.pokemon_name;
+      var loc_id = data.id;
+      var id = data.pokemon_id;
+      var name = data.pokemon_name;
       var lat = data.lat;
       var lng = data.lng;
-      var newPokemon = new Pokemon(pokemon_id, pokemon_name);
-      var newSpawn = new SpawnLocation(location_id, lat, lng, newPokemon);
-      if (model.pokemons[pokemon_id] === undefined) {
-        model.pokemons[pokemon_id] = newPokemon;
-        MapView.updateMarker(newSpawn);
-        // Update data from pogosnap
-        pogosnap.getData(newPokemon, function (picData) {
-          model.pokemons[pokemon_id].picture = picData.picture;
-          model.pokemons[pokemon_id].permalink = picData.permalink;
-          model.pokemons[pokemon_id].author = picData.author;
-          model.pokemons[pokemon_id].pogosnapStatus = picData.status;
 
-          MapView.updateMarker(newSpawn);
-        });
-        // Update data from pokeapi
-        pokeapi.getData(pokemon_id, function (bioData) {
-          model.pokemons[pokemon_id].weight = bioData.weight;
-          model.pokemons[pokemon_id].height = bioData.height;
-          model.pokemons[pokemon_id].pokeapiStatus = bioData.status;
-          bioData.types.forEach(function (i) {
-            model.pokemons[pokemon_id].types.push(i.type.name);
-          });
-          MapView.updateMarker(newSpawn);
-        });
+      model.locations[loc_id] = new SpawnLocation(loc_id, lat, lng, new Pokemon(id, name));
+
+      if (model.pokemons[id] === undefined) {
+        model.pokemons[id] = new Pokemon(id, name);
+        model.locations[loc_id].updatePokeInfo(model.pokemons[id]);
+        MapView.updateMarker(model.locations[loc_id]);
+      }
+      // Update data from pogosnap
+      if (model.pokemons[id].pogoSnapStatus === 'ok') {
+        model.locations[loc_id].updatePokeInfo(model.pokemons[id]);
+        MapView.updateMarker(model.locations[loc_id]);
       }
       else {
+        pogosnap.getData(model.pokemons[id], function (picData) {
+          model.pokemons[id].picture = picData.picture;
+          model.pokemons[id].permalink = picData.permalink;
+          model.pokemons[id].author = picData.author;
+          model.pokemons[id].pogosnapStatus = picData.status;
+          model.locations[loc_id].updatePokeInfo(model.pokemons[id]);
+          MapView.updateMarker(model.locations[loc_id]);
+        });
+      }
 
+      // Update data from pokeapi
+      if (model.pokemons[id].pokeapiStatus === 'ok') {
+        model.locations[loc_id].updatePokeInfo(model.pokemons[id]);
+        MapView.updateMarker(model.locations[loc_id]);
+      }
+      else {
+        pokeapi.getData(id, function (bioData) {
+          model.pokemons[id].weight = bioData.weight;
+          model.pokemons[id].height = bioData.height;
+          model.pokemons[id].pokeapiStatus = bioData.status;
+          bioData.types.forEach(function (i) {
+            model.pokemons[id].types.push(i.type.name);
+          });
+          model.locations[loc_id].updatePokeInfo(model.pokemons[id]);
+          MapView.updateMarker(model.locations[loc_id]);
+        });
       }
     });
   },

@@ -1,6 +1,7 @@
 var MapView = {
   updateMarker : function (location) {
     var self = this;
+    console.log('Location', location.name, 'marker created:', location.markerCreated);
     if (location.markerCreated === false) {
       model.markers[location.id] = new google.maps.Marker({
         position: {lat: location.lat, lng: location.lng},
@@ -9,7 +10,6 @@ var MapView = {
         title: location.name,
         id: location.id
       });
-      console.log(location.icon);
       model.infowindows[location.id] = new google.maps.InfoWindow();
       model.markers[location.id].addListener('click', function () {
         // Open infowindow

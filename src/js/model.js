@@ -51,9 +51,6 @@ var SpawnLocation = function (id, lat, lng, pokemon) {
   self.markerCreated = false;
   self.pokemon_id = pokemon.id;
   self.updatePokeInfo = function (pokemon) {
-    console.log(pokemon);
-    console.log(pokemon.name);
-    console.log(pokemon.id);
     self.name = pokemon.name;
     self.pokemon_id = pokemon.id;
     self.icon = 'https://pokeapi.co/media/sprites/pokemon/' + pokemon.id + '.png';

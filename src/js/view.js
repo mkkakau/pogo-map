@@ -1,7 +1,6 @@
 var MapView = {
   updateMarker : function (location) {
     var self = this;
-    console.log('Location', location.name, 'marker created:', location.markerCreated);
     if (location.markerCreated === false) {
       model.markers[location.id] = new google.maps.Marker({
         position: {lat: location.lat, lng: location.lng},

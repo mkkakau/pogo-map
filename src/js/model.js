@@ -37,6 +37,10 @@ var Location = function (id, type, lat, lng, name) {
     url += '&key=' + params.key;
     self.streetViewUrl = url;
   };
+  self.logLatLng = function () {
+    map.panTo({lat: self.lat, lng: self.lng});
+    map.setZoom(17);
+  };
   self.setStreetViewUrl();
 };
 // Spawn Location Class
@@ -50,6 +54,10 @@ var SpawnLocation = function (id, lat, lng, pokemon) {
   self.name = pokemon.name;
   self.markerCreated = false;
   self.pokemon_id = pokemon.id;
+  self.logLatLng = function () {
+    map.panTo({lat: self.lat, lng: self.lng});
+    map.setZoom(17);
+  };
   self.updatePokeInfo = function (pokemon) {
     self.name = pokemon.name;
     self.pokemon_id = pokemon.id;

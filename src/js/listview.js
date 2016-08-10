@@ -26,6 +26,7 @@ var ListViewViewModel = function () {
         if (name.search(filter) > -1) {
           model.markers[loc.id].setVisible(true);
           filteredLocations.push(loc);
+          console.log(loc);
         }
       });
       return filteredLocations;

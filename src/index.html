@@ -34,7 +34,7 @@
           <table data-bind="foreach: filteredLocations">
             <tr>
               <td><img class="icon" src="#" alt="icon" data-bind="attr: {src: icon}"></td>
-              <td><a href="#" class="drawer-menu-item" data-bind="text: name"></a></td>
+              <td><a href="#" class="drawer-menu-item" data-bind="text: name, click: logLatLng"></a></td>
             </tr>
           </table>
         </li>

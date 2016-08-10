@@ -37,9 +37,13 @@ var Location = function (id, type, lat, lng, name) {
     url += '&key=' + params.key;
     self.streetViewUrl = url;
   };
-  self.logLatLng = function () {
-    map.panTo({lat: self.lat, lng: self.lng});
-    map.setZoom(17);
+  self.openInfoWindow = function () {
+    model.infowindows[self.id].open(map, model.markers[self.id]);
+    // Bounce twice on click
+    model.markers[self.id].setAnimation(google.maps.Animation.BOUNCE);
+    setTimeout(function () {
+      model.markers[self.id].setAnimation(null);
+    }, 1420);
   };
   self.setStreetViewUrl();
 };
@@ -54,9 +58,12 @@ var SpawnLocation = function (id, lat, lng, pokemon) {
   self.name = pokemon.name;
   self.markerCreated = false;
   self.pokemon_id = pokemon.id;
-  self.logLatLng = function () {
-    map.panTo({lat: self.lat, lng: self.lng});
-    map.setZoom(17);
+  self.openInfoWindow = function () {
+    model.infowindows[self.id].open(map, model.markers[self.id]);
+    model.markers[self.id].setAnimation(google.maps.Animation.BOUNCE);
+    setTimeout(function () {
+      model.markers[self.id].setAnimation(null);
+    }, 1420);
   };
   self.updatePokeInfo = function (pokemon) {
     self.name = pokemon.name;

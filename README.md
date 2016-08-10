@@ -1,7 +1,13 @@
 Pogo Map
 ===========================
-Pogo Map is a neighborhood map project created for Udacity's Front End Web Developer Nanodegree.
+Pogo Map is a Google Map project created for Udacity's Front End Web Developer Nanodegree.
 The map displays locations of pokestops, gyms, and locations where Pokemon frequently spawn at Liliuokalani Gardens and Wailoa State Park.
+
+APIs Used:
+* [Firebase](https://firebase.google.com/docs/): Store location data
+* [Pokéapi](https://pokeapi.co/docsv2/): Pokemon stats and icons
+* [Reddit](https://www.reddit.com/dev/api/): Pokemon Go screenshots from [/r/PokemonGoSnap](https://www.reddit.com/r/pokemongosnap)
+
 
 How to Use:
 -----------
@@ -15,5 +21,6 @@ OR
 
 TODO:
 ------------
-* Clickable area for pokemon icons are too big. May be able to fix using marker's shape property.
-More info: https://developers.google.com/maps/documentation/javascript/markers
+* Resize clickable area for pokemon icons - May be able to fix using marker's shape property.
+
+* Server status icon - Not sure if possible to ping server or get server status from an API using only JavaScript. 

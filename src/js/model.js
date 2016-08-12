@@ -38,7 +38,8 @@ var Location = function (id, type, lat, lng, name) {
     self.streetViewUrl = url;
   };
   self.openInfoWindow = function () {
-    model.infowindows[self.id].open(map, model.markers[self.id]);
+    infoWindow.setContent(MapView.fillTemplate(self));
+    infoWindow.open(map, model.markers[self.id]);
     // Bounce twice on click
     model.markers[self.id].setAnimation(google.maps.Animation.BOUNCE);
     setTimeout(function () {
@@ -59,7 +60,8 @@ var SpawnLocation = function (id, lat, lng, pokemon) {
   self.markerCreated = false;
   self.pokemon_id = pokemon.id;
   self.openInfoWindow = function () {
-    model.infowindows[self.id].open(map, model.markers[self.id]);
+    infoWindow.setContent(MapView.fillTemplate(self));
+    infoWindow.open(map, model.markers[self.id]);
     model.markers[self.id].setAnimation(google.maps.Animation.BOUNCE);
     setTimeout(function () {
       model.markers[self.id].setAnimation(null);
@@ -76,5 +78,4 @@ var model = {
   pokemons : [],
   locations : [],
   markers : [],
-  infowindows : []
 };

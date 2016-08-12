@@ -41,12 +41,13 @@ var pokeapi = {
   },
 };
 // Google Maps
-var map;
+var map, infoWindow;
 var initMap = function () {
   map = new google.maps.Map(document.getElementById('map'), {
     center: {lat: 19.725862, lng: -155.06906},
     zoom: 16
   });
+  infoWindow = new google.maps.InfoWindow();
 };
 var googleError = function () {
   document.getElementById('map').innerHTML = '<h1>Sorry, Google Maps is unavailable at the moment</h1><p>Please try again later.</p>';

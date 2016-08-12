@@ -9,10 +9,10 @@ var MapView = {
         title: location.name,
         id: location.id
       });
-      model.infowindows[location.id] = new google.maps.InfoWindow();
       model.markers[location.id].addListener('click', function () {
         // Open infowindow
-        model.infowindows[location.id].open(map, model.markers[location.id]);
+        infoWindow.setContent(self.fillTemplate(location));
+        infoWindow.open(map, model.markers[location.id]);
         // Bounce twice on click
         model.markers[location.id].setAnimation(google.maps.Animation.BOUNCE);
         setTimeout(function () {
@@ -21,7 +21,6 @@ var MapView = {
       });
       location.markerCreated = true;
     }
-    model.infowindows[location.id].setContent(self.fillTemplate(location));
   },
   template :
 

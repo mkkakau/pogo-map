@@ -48,6 +48,9 @@ var initMap = function () {
     zoom: 16
   });
 };
+var googleError = function () {
+  document.getElementById('map').innerHTML = '<h1>Sorry, Google Maps is unavailable at the moment</h1><p>Please try again later.</p>';
+};
 // Reddit /r/PokemonGoSnap
 var pogosnap = {
   urlPrefix : 'https://www.reddit.com/r/PokemonGoSnap/search.json?',

@@ -78,11 +78,3 @@ var model = {
   markers : [],
   infowindows : []
 };
-
-// // Testing Model
-// model.pokemons[1] = new Pokemon(1);
-// model.pokemons[1].id = '1';
-// model.pokemons[1].name = 'bulbasaur';
-//
-// var spawn = new SpawnLocation(0, 0, model.pokemons[1]);
-// console.log(spawn);

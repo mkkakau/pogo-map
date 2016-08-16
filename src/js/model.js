@@ -3,16 +3,31 @@ var Pokemon = function (id, name) {
   var self = this;
   self.id = id;
   self.name = name;
+  self.icon = '';
   // Updated from Pokeapi:
   self.types = [];
   self.weight = '';
   self.height = '';
-  self.pokeapiStatus = 'loading';
+  self.pokeapiStatus = null;
   // Updated from /r/PokemonGoSnap:
   self.picture = '';
   self.author = '';
   self.permalink = '#';
-  self.pogosnapStatus = 'loading';
+  self.pogosnapStatus = null;
+
+  self.setIcon = function () {
+    var location = 'img/pokemon/';
+    var type = '.png';
+    var threeDigitId = self.id.toString();
+    if (self.id < 10) {
+      threeDigitId = '00' + threeDigitId;
+    }
+    else if (self.id < 100) {
+      threeDigitId = '0' + threeDigitId;
+    }
+    self.icon = location + threeDigitId + type;
+  };
+  self.setIcon();
 };
 // Location Class
 var Location = function (id, type, lat, lng, name) {
@@ -49,16 +64,15 @@ var Location = function (id, type, lat, lng, name) {
   self.setStreetViewUrl();
 };
 // Spawn Location Class
-var SpawnLocation = function (id, lat, lng, pokemon) {
+var SpawnLocation = function (id, lat, lng, poke_id) {
   var self = this;
   self.id = id;
   self.type = 'spawn';
   self.lat = lat;
   self.lng = lng;
-  self.icon = 'https://pokeapi.co/media/sprites/pokemon/' + pokemon.id + '.png';
-  self.name = pokemon.name;
-  self.markerCreated = false;
-  self.pokemon_id = pokemon.id;
+  self.name = '';
+  self.icon = '';
+  self.poke_id = poke_id;
   self.openInfoWindow = function () {
     infoWindow.setContent(MapView.fillTemplate(self));
     infoWindow.open(map, model.markers[self.id]);
@@ -67,10 +81,10 @@ var SpawnLocation = function (id, lat, lng, pokemon) {
       model.markers[self.id].setAnimation(null);
     }, 1420);
   };
-  self.updatePokeInfo = function (pokemon) {
+  self.updatePokemon = function (pokemon) {
+    self.poke_id = pokemon.id;
     self.name = pokemon.name;
-    self.pokemon_id = pokemon.id;
-    self.icon = 'https://pokeapi.co/media/sprites/pokemon/' + pokemon.id + '.png';
+    self.icon = pokemon.icon;
   };
 };
 

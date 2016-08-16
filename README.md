@@ -23,4 +23,6 @@ TODO:
 ------------
 * Resize clickable area for pokemon icons - May be able to fix using marker's shape property.
 
-* Server status icon - Not sure if possible to ping server or get server status from an API using only JavaScript. 
+* Server status icon - Not sure if possible to ping server or get server status from an API using only JavaScript.
+
+* Use sprite sheet for pokemon icons

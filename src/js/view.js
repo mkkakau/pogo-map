@@ -1,7 +1,7 @@
 var MapView = {
-  updateMarker : function (location) {
+  createMarker : function (location) {
     var self = this;
-    if (location.markerCreated === false) {
+    if (model.markers[location.id] === undefined) {
       model.markers[location.id] = new google.maps.Marker({
         position: {lat: location.lat, lng: location.lng},
         map: map,
@@ -19,7 +19,9 @@ var MapView = {
           model.markers[location.id].setAnimation(null);
         }, 1420);
       });
-      location.markerCreated = true;
+    }
+    else {
+      console.log('Marker already created for location:', location.name);
     }
   },
   template :
@@ -56,12 +58,12 @@ var MapView = {
 
   fillTemplate : function (location) {
     var content;
-    var pokemon = model.pokemons[location.pokemon_id];
+    var pokemon = model.pokemons[location.poke_id];
 
     // Pokemon specific template items:
     if (location.type === 'spawn') {
       content = this.spawnTemplate;
-      content = content.split('%pokemon_id%').join(location.pokemon_id);
+      content = content.split('%pokemon_id%').join(location.poke_id);
       content = content.split('%picture%').join(pokemon.picture);
 
       if (pokemon.pogosnapStatus === 'ok') {

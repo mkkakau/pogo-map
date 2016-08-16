@@ -26,8 +26,17 @@ var pokeapi = {
   getData : function (id, cb) {
     var url = this.urlPrefix + id;
     var jqxhr = $.getJSON(url, function (data) {
-      data.status = 'ok';
-      cb(data);
+      var myTypes = [];
+      data.types.forEach(function (type) {
+        myTypes.push(type.type.name);
+      });
+      var myData = {
+        weight: data.weight,
+        height: data.height,
+        types: myTypes,
+        status: 'ok',
+      };
+      cb(myData);
     })
     .fail(function () {
       var noData = {

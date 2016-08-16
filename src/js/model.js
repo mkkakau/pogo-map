@@ -16,7 +16,7 @@ var Pokemon = function (id, name) {
   self.pogosnapStatus = null;
 
   self.setIcon = function () {
-    var location = 'img/pokemon/';
+    var location = 'img/';
     var type = '.png';
     var threeDigitId = self.id.toString();
     if (self.id < 10) {
